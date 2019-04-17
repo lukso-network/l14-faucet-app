@@ -1,59 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>L14 Lukso Network dev testnet faucet</title>
-    <link rel="stylesheet" type="text/css" href="./assets/stylesheets/application.css">
-    <link rel="apple-touch-icon" href="./favicons/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="./favicons/android-chrome-192x192.png">
-    <link rel="mask-icon" color="#6151cc" href="./favicons/safari-pinned-tab.svg">
-    <link rel="manifest" href="./favicons/manifest.webmanifest">
-    <link href="./favicons/favicon.ico" rel="icon" type="image/x-icon">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-  </head>
-  <body>
-    <header class="header">
-      <div class="container">
-        <a href="#" class="header-logo"></a>
+<head>
+  <title>L14 Lukso Network dev testnet faucet</title>
+  <link rel="stylesheet" type="text/css" href="./assets/stylesheets/application.css">
+  <link rel="apple-touch-icon" href="./favicons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./favicons/android-chrome-192x192.png">
+  <link rel="mask-icon" color="#6151cc" href="./favicons/safari-pinned-tab.svg">
+  <link rel="manifest" href="./favicons/manifest.webmanifest">
+  <link href="./favicons/favicon.ico" rel="icon" type="image/x-icon">
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <a href="#" class="header-logo"></a>
+    <span class="logo-title">Faucet</span>
+  </div>
+</header>
+<section class="content">
+  <form action="/" method="POST" id="faucetForm">
+    <div class="request-tokens">
+      <input type="text" id="receiver" name="receiver" />
+      <h2>
+        Please use <a href="http://rpc.l14.lukso.network:8545/">http://rpc.l14.lukso.network:8545/</a> RPC to connect<br>
+        to the L14 testnet.
+      </h2>
+      <div class="text-xs-center">
+        <div class="g-recaptcha" data-sitekey="6LdcdjQUAAAAACIxl5VzkTRuVG5KvWdf0rYcC7mD"></div>
       </div>
-    </header>
-    <section class="content">
-      <form action="/" method="POST" id="faucetForm">
-        <div class="request-tokens">
-          <h1>L14 Lukso Faucet</h1>
-            <input type="text" id="receiver" name="receiver" />
-            <h2>
-              Please use rpc.l14.lukso.network RPC to connect<br>
-              to the L14 testnet.
-            </h2>
-            <button type="submit" id="requestTokens" class="request-tokens-button">Request 0.5 Lyx</button>
-        </div>
-        <div class="text-xs-center">
-          <div class="g-recaptcha" data-sitekey="6LdcdjQUAAAAACIxl5VzkTRuVG5KvWdf0rYcC7mD"></div>
-        </div>
-      </form>
-    </section>
-    <div class="loading-container hidden">
-      <div class="loading">
-        <div class="loading-i"></div>
-        <div class="loading-i"></div>
-        <div class="loading-i"></div>
-        <div class="loading-i"></div>
-        <div class="loading-i"></div>
-        <div class="loading-i"></div>
-      </div>
+      <button type="submit" id="requestTokens" class="request-tokens-button">Request 0.5 Lyx</button>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <p class="rights">2018 POA Network. All rights reserved.</p>
-        <a class="logo" href='/'></a>
-        <div class="socials">
-          <a href="https://twitter.com/poanetwork" class="social social_twitter"></a>
-          <a href="https://poa.network" class="social social_oracles"></a>
-          <a href="https://t.me/oraclesnetwork" class="social social_telegram"></a>
-          <a href="https://github.com/poanetwork" class="social social_github"></a>
-        </div>
-      </div>
-    </footer>
-    <script src="./assets/javascripts/application.js?v=1.4" type="text/javascript"></script>
-  </body>
+  </form>
+</section>
+<div class="loading-container hidden">
+  <div class="loading">
+    <div class="loading-i"></div>
+    <div class="loading-i"></div>
+    <div class="loading-i"></div>
+    <div class="loading-i"></div>
+    <div class="loading-i"></div>
+    <div class="loading-i"></div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="rights">Built by POA Network. All rights reserved.</p>
+    <div class="socials">
+      <a href="https://twitter.com/poanetwork" class="social social_twitter"></a>
+      <a href="https://poa.network" class="social social_oracles"></a>
+      <a href="https://t.me/oraclesnetwork" class="social social_telegram"></a>
+      <a href="https://github.com/poanetwork" class="social social_github"></a>
+    </div>
+  </div>
+</footer>
+<script src="./assets/javascripts/application.js?v=1.4" type="text/javascript"></script>
+</body>
 </html>
