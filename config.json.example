@@ -8,7 +8,7 @@
     "milliEtherToTransfer": 500,
     "gasLimit": "21000",
     "prod": {
-      "rpc": "http://127.0.0.1:8545",
+      "rpc": "http://rpc.l14.lukso.network:8545",
       "account": "",
       "privateKey": ""
     }

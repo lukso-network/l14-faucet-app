@@ -1,7 +1,7 @@
 {
-  "name": "poa-network-sokol-faucet",
+  "name": "lukso-network-l14-faucet",
   "version": "1.0.1",
-  "description": "Sokol tetnet POA Network faucet",
+  "description": "LUKSO L14 testnet Network faucet",
   "main": "index.js",
   "scripts": {
     "start": "npm run sass && npm run coffee && node index.js",
