@@ -1,0 +1,11 @@
+version: "3.4"
+services:
+
+  faucet:
+    image: lukso-faucet:0.1.1
+    container_name: lukso-faucet
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - ./config/config.json:/home/node/app/config.json

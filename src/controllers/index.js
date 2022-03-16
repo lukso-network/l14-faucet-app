@@ -18,24 +18,25 @@ module.exports = function (app) {
 		const isDebug = app.config.debug
 		debug(isDebug, "REQUEST:")
 		debug(isDebug, request.body)
-		const recaptureResponse = request.body["g-recaptcha-response"]
-		if (!recaptureResponse) {
-			const error = {
-				message: messages.INVALID_CAPTCHA,
-			}
-			return generateErrorResponse(response, error)
-		}
-
-		let captchaResponse
-		try {
-			captchaResponse = await validateCaptcha(app, recaptureResponse)
-		} catch(e) {
-			return generateErrorResponse(response, e)
-		}
+		// const recaptureResponse = request.body["g-recaptcha-response"]
+		// if (!recaptureResponse) {
+		// 	const error = {
+		// 		message: messages.INVALID_CAPTCHA,
+		// 	}
+		// 	return generateErrorResponse(response, error)
+		// }
+		//
+		// let captchaResponse
+		// try {
+		// 	captchaResponse = await validateCaptcha(app, recaptureResponse)
+		// } catch(e) {
+		// 	return generateErrorResponse(response, e)
+		// }
 		const receiver = request.body.receiver
-		if (await validateCaptchaResponse(captchaResponse, receiver, response)) {
-			await sendPOAToRecipient(web3, receiver, response, isDebug)
-		}
+		await sendPOAToRecipient(web3, receiver, response, isDebug)
+		// if (await validateCaptchaResponse(captchaResponse, receiver, response)) {
+		// 	await sendPOAToRecipient(web3, receiver, response, isDebug)
+		// }
 	});
 
 	app.get('/health', async function(request, response) {
@@ -70,10 +71,10 @@ module.exports = function (app) {
 		let senderPrivateKey = config.Ethereum[config.environment].privateKey
 		const privateKeyHex = Buffer.from(senderPrivateKey, 'hex')
 		if (!web3.utils.isAddress(receiver)) {
-			return generateErrorResponse(response, {message: messages.INVALID_ADDRESS})
+			return generateErrorResponse(response, {code: 400 ,title: 'Not An Ethereum Address',message: messages.INVALID_ADDRESS})
 		}
 		
-		const gasPrice = web3.utils.toWei('1', 'gwei')
+		const gasPrice = web3.utils.toWei('10', 'gwei')
 		const gasPriceHex = web3.utils.toHex(gasPrice)
 		const gasLimitHex = web3.utils.toHex(config.Ethereum.gasLimit)
 		const nonce = await web3.eth.getTransactionCount(config.Ethereum[config.environment].account)
@@ -81,6 +82,7 @@ module.exports = function (app) {
 		const BN = web3.utils.BN
 		const ethToSend = web3.utils.toWei(new BN(config.Ethereum.milliEtherToTransfer), "milliether")
 		const rawTx = {
+			chainId: 19051978,
 		  nonce: nonceHex,
 		  gasPrice: gasPriceHex,
 		  gasLimit: gasLimitHex,
@@ -89,6 +91,7 @@ module.exports = function (app) {
 		  data: '0x00'
 		}
 
+		debug(isDebug, rawTx)
 		const tx = new EthereumTx(rawTx)
 		tx.sign(privateKeyHex)
 
