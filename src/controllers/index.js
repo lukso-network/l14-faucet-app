@@ -68,6 +68,7 @@ module.exports = function (app) {
 	}
 
 	async function sendPOAToRecipient(web3, receiver, response, isDebug) {
+		let chainId = config.Ethereum[config.environment].chainId
 		let senderPrivateKey = config.Ethereum[config.environment].privateKey
 		const privateKeyHex = Buffer.from(senderPrivateKey, 'hex')
 		if (!web3.utils.isAddress(receiver)) {
@@ -82,7 +83,7 @@ module.exports = function (app) {
 		const BN = web3.utils.BN
 		const ethToSend = web3.utils.toWei(new BN(config.Ethereum.milliEtherToTransfer), "milliether")
 		const rawTx = {
-			chainId: 19051978,
+			chainId: chainId,
 		  nonce: nonceHex,
 		  gasPrice: gasPriceHex,
 		  gasLimit: gasLimitHex,
