@@ -68,7 +68,7 @@ module.exports = function (app) {
 	}
 
 	async function sendPOAToRecipient(web3, receiver, response, isDebug) {
-		let chainId = config.Ethereum[config.environment].chainId
+		let chainId = Buffer.from(config.Ethereum[config.environment].chainId, 'hex')
 		let senderPrivateKey = config.Ethereum[config.environment].privateKey
 		const privateKeyHex = Buffer.from(senderPrivateKey, 'hex')
 		if (!web3.utils.isAddress(receiver)) {
