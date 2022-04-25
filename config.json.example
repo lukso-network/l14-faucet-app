@@ -9,6 +9,7 @@
     "milliEtherToTransfer": 500,
     "gasLimit": "21000",
     "prod": {
+      "chainId": "",
       "rpc": "http://rpc.l14.lukso.network:8545",
       "account": "",
       "privateKey": ""
