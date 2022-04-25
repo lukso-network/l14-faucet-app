@@ -2,7 +2,7 @@
 
 set -e
 
-export version=0.1.3
+export version=0.1.4
 export containername=lukso-faucet
 export registry=leondroid
 
