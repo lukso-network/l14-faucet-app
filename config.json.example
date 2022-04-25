@@ -5,8 +5,7 @@
     "secret": ""
   },
   "Ethereum": {
-    "chainId": "",
-    "milliEtherToTransfer": 500,
+    "milliEtherToTransfer": 35000,
     "gasLimit": "42000",
     "prod": {
       "chainId": "",
